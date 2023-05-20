@@ -1,0 +1,30 @@
+.header__burger-btn {
+  display: none;
+  background-image: url(../../../image/burgerbtn.svg);
+  width: 24px;
+  height: 25px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  margin-right: 30px;
+  transition: opacity 0.4s;
+}
+
+.header__burger-btn:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 580px) {
+  .header__burger-btn {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .header__burger-btn {
+    margin-bottom: 31px;
+  }
+}

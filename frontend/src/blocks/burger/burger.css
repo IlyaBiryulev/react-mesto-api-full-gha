@@ -1,0 +1,23 @@
+.burger {
+  max-width: 100%;
+  font-family: "Inter", "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  position: absolute;
+  top: -160px;
+  padding-top: 40px;
+}
+
+@media screen and (max-width:560px) {
+  .burger {
+    margin: 0 50px;
+  }
+}
+
+@media screen and (max-width:466px) {
+  .burger {
+    margin: 0;
+  }
+}

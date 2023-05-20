@@ -1,0 +1,23 @@
+.profile__edit-button {
+  width: 24px;
+  height: 24px;
+  display: flex; /*Выравнивает кнопку относительно текста в браузере Mozilla Firefox, иначе кнопка уходит ниже текста*/
+  background-image: url(../../../image/EditButton.svg);
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 0;
+}
+
+.profile__edit-button:hover {
+  transition: 0.5s;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1076px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+}

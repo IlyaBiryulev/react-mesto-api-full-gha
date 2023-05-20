@@ -1,0 +1,15 @@
+.burger__logout-btn {
+  width: 56px;
+  height: 22px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #A9A9A9;
+  background: transparent;
+  border: none;
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
+  cursor: pointer;
+}
+

@@ -1,0 +1,7 @@
+.photo-grid__caption {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 20px 27px;
+}
