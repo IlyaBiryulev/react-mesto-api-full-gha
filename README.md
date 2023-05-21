@@ -6,7 +6,7 @@
 
 ## Ссылки на проект
 
-IP-адрес: 158.160.30.248
+IP 158.160.30.248
 
 Frontend https://mestofulldomen.nomoredomains.monster/
 
