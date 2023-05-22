@@ -1,4 +1,13 @@
-const { allowedCors, DEFAULT_ALLOWED_METHODS } = require('../utils/constants');
+const allowedCors = [
+  'https://mestofulldomen.nomoredomains.monster',
+  'https://api.mestofulldomen.nomoredomains.monster',
+  'http://158.160.30.248',
+  'https://158.160.30.248',
+  'http://localhost:3000',
+  'http://localhost:3001',
+];
+
+const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 module.exports = (req, res, next) => {
   const { origin } = req.headers;
