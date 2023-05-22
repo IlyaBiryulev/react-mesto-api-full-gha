@@ -1,4 +1,4 @@
-/* const allowedCors = [
+const allowedCors = [
   'https://mestofulldomen.nomoredomains.monster',
   'https://api.mestofulldomen.nomoredomains.monster',
   'http://158.160.30.248',
@@ -24,4 +24,3 @@ module.exports = (req, res, next) => {
   }
   return next();
 };
- */
