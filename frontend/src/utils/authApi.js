@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.mestofulldomen.nomoredomains.monster';
+export const BASE_URL = 'https://api.mestofulldomen.nomoredomains.monster/';
 
 const makeRequest = (url, method, body, token) => {
   const headers = {'Content-Type': 'application/json'};
