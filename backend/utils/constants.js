@@ -3,8 +3,8 @@ const LINK = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,}\.[a-zA-Z0-9()]{1,6}\
 const allowedCors = [
   'https://mestofulldomen.nomoredomains.monster',
   'https://api.mestofulldomen.nomoredomains.monster',
-  'http://158.160.53.34',
-  'https://158.160.53.34',
+  'http://158.160.30.248',
+  'https://158.160.30.248',
   'http://localhost:3000',
   'http://localhost:3001',
 ];
