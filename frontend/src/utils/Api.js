@@ -109,14 +109,12 @@ class Api {
       return this._getResponse(res)
     });
   }
-
-
 }
 
 export const api = new Api({
   baseUrl: 'https://api.mestofulldomen.nomoredomains.monster',
   headers: {
-    authorization: '34b33043-5140-4391-8d43-660bc14ee8a8',
-    'Content-Type': 'application/json'
-  }
+    "Content-Type": "application/json",
+    'Accept': 'application/json',
+  },
 });

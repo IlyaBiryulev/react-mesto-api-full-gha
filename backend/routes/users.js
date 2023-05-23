@@ -8,11 +8,14 @@ const {
   updateUserProfile,
   updateUserAvatar,
   getUser,
+  logout,
 } = require('../controllers/users');
 
 router.get('/', getAllUser);
 
 router.get('/me', getUser);
+
+router.delete('/me', logout);
 
 router.get('/:userId', celebrate({
   params: Joi.object().keys({

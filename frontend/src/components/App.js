@@ -47,7 +47,8 @@ function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then((values) => {
       setCurrentUser(values[0])
       setCards(values[1])
@@ -55,7 +56,8 @@ function App() {
     .catch((err) => {
       console.log(err);
     });
-  },[])
+    }
+  },[loggedIn])
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -157,24 +159,23 @@ function App() {
     });
   }
 
-  const handleUserAuthorize = React.useCallback(
-    async ({email, password}) => {
-    try {
-      const data = await authApi.authorize(email, password);
-      if(data.token) {
-        localStorage.setItem('token', data.token);
-        setLoggedIn(true);
+  const handleUserAuthorize = (email, password) => {
+    return authApi.authorize(email, password)
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem('token', data.token)
         setUserEmail(email);
-        navigate('/', {replace: true});
+        setLoggedIn(true);
+        navigate('/', { replace: true });
       }
-    } catch(err) {
-      console.error(err)
-    } finally {
-      setLoading(false)
-    }
-  },
-  [navigate]
-  )
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+  }
 
   const handleUserRegister = React.useCallback(
     async ({email, password}) => {

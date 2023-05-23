@@ -5,7 +5,7 @@ const AuthError = require('../errors/AuthError');
 const { NODE_ENV, SECRET_KEY } = process.env;
 
 module.exports = (req, res, next) => {
-  const token = req.cookies.jwt;
+  const { token } = req.cookies;
   if (!token) {
     return next(new AuthError('Необходима авторизация'));
   }

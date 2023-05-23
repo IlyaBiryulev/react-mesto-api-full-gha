@@ -91,7 +91,7 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? SECRET_KEY : 'dev-secret-key',
         { expiresIn: '7d' },
       );
-      res.cookie('jwt', token, {
+      res.cookie('token', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: true,
@@ -99,4 +99,8 @@ module.exports.login = (req, res, next) => {
       res.send({ message: 'Успешный вход' });
     })
     .catch(next);
+};
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('token').send({ message: 'Вы вышли из профиля' });
 };
