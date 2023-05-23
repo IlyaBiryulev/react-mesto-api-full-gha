@@ -160,7 +160,7 @@ function App() {
   }
 
   const handleUserAuthorize = (email, password) => {
-    return authApi.authorize(email, password)
+    authApi.authorize(email, password)
     .then((data) => {
       if (data.token) {
         localStorage.setItem('token', data.token)

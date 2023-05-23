@@ -1,7 +1,13 @@
 class Api {
-  constructor({baseUrl, headers}) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
+  constructor(data) {
+    this._baseUrl = data.baseUrl;
+    this._headers = data.headers;
+  }
+
+  _headersDataToken = () => {
+    this._token = localStorage.getItem('token');
+    this._headers.authorization = `Bearer ${this._token}`
+    return this._headers;
   }
 
   _getResponse(res) {
@@ -14,7 +20,7 @@ class Api {
   getUserInfo() {
     const url = this._baseUrl + `/users/me`;
     return fetch(url, {
-      headers: this._headers
+      headers: this._headersDataToken()
     })
     .then(res => {
       return this._getResponse(res)
@@ -24,7 +30,7 @@ class Api {
   getInitialCards() {
     const url = this._baseUrl + `/cards`;
     return fetch(url , {
-    headers: this._headers
+    headers: this._headersDataToken()
   })
     .then(res => {
       return this._getResponse(res);
@@ -35,7 +41,7 @@ class Api {
     const url = this._baseUrl + `/cards`;
     return fetch(url, {
       method: 'POST',
-      headers: this._headers,
+      headers: this._headersDataToken(),
       body: JSON.stringify(popupInputsValue)
     })
     .then(res => {
@@ -47,7 +53,7 @@ class Api {
     const url = this._baseUrl + `/cards/${id}`;
     return fetch(url, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headersDataToken()
     })
     .then(res => {
       return this._getResponse(res)
@@ -58,7 +64,7 @@ class Api {
     const url = this._baseUrl + `/cards/${id}/likes`;
     return fetch(url, {
       method: 'PUT',
-      headers: this._headers
+      headers: this._headersDataToken()
     })
     .then(res => {
       return this._getResponse(res)
@@ -69,7 +75,7 @@ class Api {
     const url = this._baseUrl + `/cards/${id}/likes`;
     return fetch(url, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headersDataToken()
     })
     .then(res => {
       return this._getResponse(res)
@@ -88,7 +94,7 @@ class Api {
     const url = this._baseUrl + `/users/me`;
     return fetch(url, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._headersDataToken(),
       body: JSON.stringify(popupInputsValue)
     })
     .then(res => {
@@ -100,7 +106,7 @@ class Api {
     const url = this._baseUrl + `/users/me/avatar`;
     return fetch(url, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._headersDataToken(),
       body: JSON.stringify({
         "avatar": link
       })
