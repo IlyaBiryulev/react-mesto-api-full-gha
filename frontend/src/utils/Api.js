@@ -15,13 +15,13 @@ function makeRequest(url, method, body) {
 }
 
 // REGISTRATION USER
-export function register({ password, email }) {
-  return makeRequest("/signup", "POST", { password, email });
+export function register({ email, password }) {
+  return makeRequest("/signup", "POST", { email, password });
 }
 
 // AUTHORIZATION USER
-export function authorize({ password, email }) {
-  return makeRequest("/signin", "POST", { password, email });
+export function authorize({ email, password }) {
+  return makeRequest("/signin", "POST", { email, password });
 }
 
 // LOGOUT USER
