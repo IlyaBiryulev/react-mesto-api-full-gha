@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IlyaBiryulev/express-mesto-gha.git"
+    "url": "git+https://github.com/IlyaBiryulev/react-mesto-api-full-gha.git"
   },
   "author": "Ilya Biryulev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IlyaBiryulev/express-mesto-gha/issues"
+    "url": "https://github.com/IlyaBiryulev/react-mesto-api-full-gha/issues"
   },
-  "homepage": "https://github.com/IlyaBiryulev/express-mesto-gha#readme",
+  "homepage": "https://github.com/IlyaBiryulev/react-mesto-api-full-gha#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
