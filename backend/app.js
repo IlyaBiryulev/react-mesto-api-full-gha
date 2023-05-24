@@ -28,6 +28,7 @@ app.use(router);
 app.use(errorLogger);
 
 app.use(validationErrors());
+
 app.use(errorHandler);
 
 app.listen(PORT);

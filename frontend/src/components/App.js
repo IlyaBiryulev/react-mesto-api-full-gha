@@ -8,7 +8,7 @@ import EditProfilePopup from './EditProfilePopup.js';
 import EditAvatarPopup from './EditAvatarPopup.js';
 import AddPlacePopup from './AddPlacePopup.js';
 import ImagePopup from './ImagePopup.js';
-import {api} from '../utils/Api.js';
+/* import {api} from '../utils/Api.js'; */
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 import Login from './Login';
 import Register from './Register';
@@ -16,7 +16,7 @@ import InfoTooltip from './InfoTooltip';
 import ProtectedRouteElement from './ProtectedRoute';
 import HeaderMenu from './HeaderMenu';
 
-import * as authApi from '../utils/authApi';
+import * as api from '../utils/Api.js';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -129,9 +129,9 @@ function App() {
     });
   }
 
-  const handleUpdateAvatar = (link) => {
+  const handleUpdateAvatar = (avatarData) => {
     setIsEditAvatarPopupLoading(true)
-    api.setUserAvatar(link)
+    api.setUserAvatar(avatarData)
     .then((value) => {
       setCurrentUser(value)
       closeAllPopups()
@@ -159,13 +159,13 @@ function App() {
     });
   }
 
-  const handleUserAuthorize = (email, password) => {
-    authApi.authorize(email, password)
+  const handleUserAuthorize = (userData) => {
+    setLoading(true);
+    api.authorize(userData)
     .then((data) => {
-      if (data.token) {
-        localStorage.setItem('token', data.token)
-        setUserEmail(email);
+      if (data) {
         setLoggedIn(true);
+        setUserEmail(userData.email);
         navigate('/', { replace: true });
       }
     })
@@ -180,7 +180,7 @@ function App() {
   const handleUserRegister = React.useCallback(
     async ({email, password}) => {
       try {
-        const data = await authApi.register(email, password);
+        const data = await api.register(email, password);
         if (data) {
           setIsRegisterSucces(true);
           setIsInfoToolTipOpen(true);
@@ -198,18 +198,14 @@ function App() {
     [navigate]
   );
 
-  const tokenCheck = React.useCallback(
+  const userCheck = React.useCallback(
     async () => {
       try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          throw new Error('no token');
-        }
-        const user = await authApi.getContent(token);
-        if (!user) {
+        const userData = await api.getContent();
+        if (!userData) {
           throw new Error('Данные пользователя отсутствуют')
         }
-        setUserEmail(user.data.email)
+        setUserEmail(userData.email)
         setLoggedIn(true);
         navigate('/', {replace: true})
       } catch(err) {
@@ -221,16 +217,23 @@ function App() {
     [navigate]
   );
 
-  const handleUserLogOut = React.useCallback(() => {
-    localStorage.removeItem('token');
-    setLoggedIn(false);
-    setUserEmail("");
-    navigate('/sign-in', { replace: true });
+  const handleUserLogOut = React.useCallback(async () => {
+    try {
+      const data = await api.logout();
+      if (data) {
+        setLoggedIn(false);
+        setUserEmail('');
+        navigate('/sign-in', { replace: true });
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }, [navigate]);
 
+
   useEffect(() => {
-    tokenCheck();
-  }, [])
+    userCheck();
+  }, [userCheck])
 
   return (
     <div>

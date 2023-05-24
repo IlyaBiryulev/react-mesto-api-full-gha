@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.mestofulldomen.nomoredomains.monster';
+/* export const BASE_URL = 'http://localhost:3000';
 
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
@@ -36,4 +36,4 @@ export const authorize = ({email, password}) => {
   })
       .then((res => res.ok || res.status === 401 ? res.json() : Promise.reject(`Ошибка: ${res.status}`)))
 
-};
+}; */
