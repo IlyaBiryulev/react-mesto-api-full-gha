@@ -8,6 +8,6 @@
 
 IP 158.160.30.248
 
-Frontend https://mestofulldomen.nomoredomains.monster/sign-in
+Frontend https://mestofulldomen.nomoredomains.monster/
 
 Backend https://api.mestofulldomen.nomoredomains.monster/
