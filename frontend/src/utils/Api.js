@@ -15,7 +15,7 @@ function makeRequest(url, method, body) {
 }
 
 // REGISTRATION USER
-export function register({ email, password }) {
+export function register( email, password ) {
   return makeRequest("/signup", "POST", { email, password });
 }
 
