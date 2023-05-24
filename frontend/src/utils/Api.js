@@ -20,7 +20,7 @@ export function register( email, password ) {
 }
 
 // AUTHORIZATION USER
-export function authorize( email, password ) {
+export function authorize({ email, password }) {
   return makeRequest("/signin", "POST", { email, password });
 }
 
