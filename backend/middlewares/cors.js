@@ -1,4 +1,6 @@
 const allowedCors = [
+  'http://mestofulldomen.nomoredomains.monster',
+  'http://api.mestofulldomen.nomoredomains.monster',
   'https://mestofulldomen.nomoredomains.monster',
   'https://api.mestofulldomen.nomoredomains.monster',
   'http://158.160.70.180',
